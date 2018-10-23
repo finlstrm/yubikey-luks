@@ -2,6 +2,7 @@ Yubikey for LUKS
 ================
 
 This package is inspired and based on https://github.com/tfheen/ykfde.
+This package is forked from: https://github.com/cornelinux/yubikey-luks
 
 This enables you to use the yubikey as 2FA for LUKS.
 The Password you enter is used as challenge for the yubikey
