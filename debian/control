@@ -1,7 +1,7 @@
 Source: yubikey-luks
 Section: admin
 Priority: extra
-Maintainer: Cornelius Kölbel <corny@cornelinux.de>
+Maintainer: Michael J. Ford <michael.ford@slashetc.us>
 Build-Depends: debhelper (>= 7.0.50)
 Standards-Version: 3.8.3
 
