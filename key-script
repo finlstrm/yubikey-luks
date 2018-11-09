@@ -2,7 +2,7 @@
 #
 # This is /sbin/ykluks-keyscript, which gets called when unlocking the disk
 #
-set -e
+
 . /etc/ykluks.cfg
 
 if [ -z "$WELCOME_TEXT" ]; then
@@ -19,12 +19,7 @@ message()
     return 0
 }
 
-check_yubikey_present() {
-    ykchalresp -2 AreYouThere > /dev/null 2>%1
-    return $?
-}
-
-udevadm settle || true
+check_yubikey_present="$(ykinfo -q -2)"
 
 # source for log_*_msg() functions, see LP: #272301
 if [ -e /scripts/functions ] ; then
@@ -45,13 +40,13 @@ fi
 
 PW="$($cryptkeyscript "$WELCOME_TEXT")"
 
-if [ "$HASH" = "1" ]; then
-	PW=$(printf %s "$PW" | sha256sum | awk '{print $1}')
-fi
 
-if check_yubikey_present; then
+if [ "$check_yubikey_present" = "1" ]; then
 	message "Accessing yubikey..."
-    R="$(ykchalresp -2 "$PW" 2>/dev/null || true)"
+	if [ "$HASH" = "1" ]; then
+        	PW=$(printf %s "$PW" | sha256sum | awk '{print $1}')
+	fi
+    	R="$(ykchalresp -2 "$PW" 2>/dev/null || true)"
 	message "Retrieved the response from the Yubikey"
 	if [ "$CONCATENATE" = "1" ]; then
 		printf '%s' "$PW$R"
