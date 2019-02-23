@@ -1,3 +1,12 @@
+yubikey-luks (0.5.2) trusty; urgency=low
+
+  * Merge 'vincent43/fixes' into finlstrm-fixes, PR #43 cornelinux/yubikey-luks
+  * Merge 'erolg/master' into finlstrm-fixes, PR #46 cornelinux/yubikey-luks
+  * Merge 'pstray/remove-unused-code' into finlstrm-fixes, PR #50 cornelinux/yubikey-luks
+  * automatticly add keyscript to crypttab
+
+ -- Michael J. Ford <michael.ford@slashetc.us>  Tue, 09 Nov 2018 19:09:04 -0400
+
 yubikey-luks (0.5.1-4) trusty; urgency=low
 
   * merged changes from upstream cornelinux/yubikey-luks
